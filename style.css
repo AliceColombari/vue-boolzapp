@@ -1,4 +1,4 @@
-/* common */
+/* GENERALI */
 * {
     margin: 0;
     padding: 0;
@@ -9,3 +9,323 @@ body {
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* CONTENITORE BACKGROUND */
+#general-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* COLORE BACKGROUND DIVISIONE NETTA */    
+    background: linear-gradient(to bottom, #009688 0px, #009688 15vh, #dddbd1 15vh, #d2dbdc 100%);
+}
+
+
+/* CONTENITORE APP CHAT */
+#app-container {
+    width: 80%;
+    height: 90%;
+    min-height: 300px;
+    min-width: 700px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* UTENTE E CHAT COLONNA */
+.col-sx-user-contact {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid lightgray;
+    background-color: #fff;
+}
+
+/* UTENTE COLONNA NOME UTENTE E IMMAGINE ATTIVA*/
+.col-sx-user-contact-active {
+    width: 100%;
+    display: flex;
+    background-color: #eaeaea;
+}
+
+/* UTENTE */
+.user-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 70%;
+}
+
+/* UTENTE IMMAGINE */
+.user-image {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+.user-image img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* UTENTE NOME */
+.user-name {
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+/* UTENTE ICONE */
+.user-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.user-icon ul{
+    display: flex;
+}
+
+.user-icon li{
+    padding: 0px 7px;
+}
+
+/* UTENTE ICONE - SELEZIONO ULTIMA ICONA */
+.user-icon li:last-child{
+    margin-right: 10px;
+}
+
+.user-icon i{
+    font-size: 15px;
+    color: #b1b1b1;
+}
+
+/* NOTIFICHE / CHAT */
+.notifications {
+    display: flex;
+    align-items: center;
+    background-color: #8edafb;
+    padding: 10px;
+}
+
+/* NOTIFICHE ICONE */
+.notifications-icon {
+    color: #8edafb;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+/* NOTIFICHE TESTO */
+.notifications-text {
+    padding: 0px 10px;
+}
+
+.notifications-text p {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.notifications-text a {
+    font-size: 12px;
+    text-decoration: underline;
+    color: grey;
+}
+
+/* RICERCA CONTATTI */
+.search-contact input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px 60px;
+    color: #b1b1b1;
+}
+
+.search-contact {
+    width: 100%;
+    position: relative;
+    background-color: #eaeaea;
+    text-align: center;
+    padding: 5px;
+}
+
+.search-contact i {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 14px;
+    color: #b1b1b1;
+}
+
+/* LISTA CONTATTI */
+.contact-list {
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* LISTA CONTATTI SINGOLO UTENTE */
+.single-user-chat {
+    padding: 10px;
+    display: flex;
+    border: 1px solid #eaeaea;
+    cursor: pointer;
+}
+
+/* LISTA CONTATTI SINGOLO UTENTE IMAGE E TESTO */
+.single-user-chat-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.single-user-chat-name {
+   padding-left: 10px;
+}
+
+/* CHAT */
+.col-chat {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* UTENTE CHAT ATTIVA */
+.user-contact-active {
+    display: flex;
+    align-items: center;
+    background-color: #eaeaea;
+}
+
+/* UTENTE CHAT IMAGE E NOME */
+.user-image-name {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 70%;
+}
+
+.user-name p {
+    color: grey;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+/* CHAT AREA BACKGROUND */
+.chat-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-image: url('./img/mine.jpg');
+}
+
+.chat-area-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    margin-top: 45px;
+}
+
+.single-message {
+    font-size: 14px;
+    max-width: 30%;
+    min-width: 25%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.single-message p{
+    padding: 15px;
+    margin-bottom: 7px;
+}
+
+.single-message span {
+    font-size: 10px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: gray;
+}
+
+/* INVIO MESSAGGIO */
+.message-area {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f3eeea;
+}
+
+.message-icon {
+    width: 35px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.message-icon a i{
+    color: #899091;
+}
+
+.message-area-testo {
+    flex-grow: 1;
+}
+
+.message-area-testo input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 10px;
+    color: #b1b1b1;
+}
+
+
+
+
+
+
+
+
+/* MESSAGGIO INVIATO */
+.sent {
+    align-self: flex-end;
+    background-color: #d5f9ba;
+}
+
+/* MESSAGGIO RICEVUTO */
+.received {
+    align-self: flex-start;
+    background-color: #fff;
+}
+
+/* CHAT ATTIVA SULL'UTENTE SELEZIOATO */
+.active {
+    background-color: #eaeaea;
+}
+
+
+
+
+
+
+

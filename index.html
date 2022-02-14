@@ -12,11 +12,155 @@
 </head>
 <body>
 
-
-
-
     <div id="app">
-        
+        <!-- CONTAINER BACKGROUND GREEN AND GRAY -->
+        <div id="general-container">
+            <!-- CONTAINER APP CHAT-->
+            <div id="app-container">
+                <!-- COLONNA SX UTENTE E CONTATTI -->
+                <div class="col-sx-user-contact">
+                    <!-- UTENTE COLONNA NOME UTENTE E IMMAGINE ATTIVA -->
+                    <div class="col-sx-user-contact-active">
+                        <!-- UTENTE -->
+                        <div class="user-container">
+                            <!-- FOTO UTENTE -->
+                            <div class="user-image">
+                                <img src="img/avatar_io.jpg" alt="">
+                            </div>
+                            <!-- NOME UTENTE -->
+                            <div class="user-name">
+                            Nome Utente
+                            </div>
+                        </div>
+                        <!-- FINE UTENTE -->
+
+                        <!-- ICONE UTENTE -->
+                        <div class="user-icon">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fas fa-circle-notch"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-comment-alt"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- FINE ICONE UTENTE -->
+                    </div>
+                    <!-- FINE UTENTE COLONNA NOME UTENTE E IMMAGINE ATTIVA -->
+
+                    <!-- NOTIFICHE / CHAT -->
+                    <div class="notifications">
+                        <!-- NOTIFICHE CHAT ICONA -->
+                        <div class="notifications-icon">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <!-- NOTIFICHE TESTO -->
+                        <div class="notifications-text">
+                            <p>Ricevi notitiche di nuovi messaggi</p>
+                            <a href="#">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                    <!-- FINE NOTIFICHE / CHAT -->
+
+                    <!-- RICERCA CONTATTI -->
+                    <div class="search-contact">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                    <!-- FINE RICERCA CONTATTI -->
+
+                    <!-- LISTA CONTATTI -->
+                    <div class="contact-list">
+                        <!-- UTENTI / UTENTE SINGOLO RICHIAMATO -->
+                        <div v-for="(contact, index) in contacts" class="single-user-chat" :class="{'active' : index === currentContactAttivo}">
+                            <!-- SINGOLO UTENTE CHAT IMAGE E TESTO -->
+                            <div class="single-user-chat-image">
+                                <img :src="'img/avatar' + contact.avatar + '.jpg'" >
+                            </div>
+                            <div class="single-user-chat-name">
+                                {{contact.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FINE LISTA CONTATTI -->
+                </div>
+                 <!-- FINE COLONNA SX UTENTE E CONTATTI -->
+               
+                 <!-- COLONNA DX CHAT -->
+                 <div class="col-chat">
+                    <!-- UTENTE E CHAT ATTIVA -->
+                    <div class="user-contact-active">
+                         <!-- UTENTE CHAT IMMAGINE E NOME -->
+                         <div class="user-image-name">
+                            <div class="user-image">
+                                <img :src="'img/avatar' + contacts[currentContactAttivo].avatar + '.jpg'" alt="">
+                             </div>
+                             <div class="user-name">
+                                 {{contacts[currentContactAttivo].name}}
+                                 <p>Ultimo accesso oggi alle</p>
+                             </div>
+                         </div>
+                         <!-- FINE UTENTE CHAT IMMAGINE E NOME -->
+
+                         <!-- UTENTE CHAT ICONE-->
+                        <div class="user-icon">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fas fa-circle-notch"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-paperclip"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- FINE UTENTE CHAT ICONE-->
+                    </div>
+                    <!-- FINE UTENTE E CHAT ATTIVA -->
+
+                    <!-- CHAT AREA -->
+                    <div class="chat-area">
+                        <div class="chat-area-container">
+                            <div class="single-message" v-for="message in contacts[currentContactAttivo].messages" :class="{'sent' : message.status === 'sent', 'received' : message.status === 'received'}">
+                                <p>{{message.text}}</p>
+                                <span>{{message.date}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FINE CHAT AREA -->
+
+                    <!-- CHAT INVIO MESSAGGIO -->
+                    <div class="message-area">
+                        <!-- ICONE INVIO MESSAGGIO -->
+                        <div class="message-icon">
+                            <a href="#"><i class="far fa-smile"></i></a>
+                        </div>
+                        <!-- AREA INVIO TESTO MESSAGGIO -->
+                        <div class="message-area-testo">
+                            <input type="text" placeholder="Scrivi un messaggio">
+                        </div>
+                        <!-- AREA INVIO REC MESSAGGIO -->
+                        <div class="message-icon">
+                            <a href="#"><i class="fas fa-microphone"></i></a>
+                        </div>
+                    </div>
+
+
+
+                 </div>
+                 <!-- FINE COLONNA DX CHAT -->
+
+
+            </div>
+            <!-- FINE CONTAINER APP CHAT-->
+        </div>
+        <!-- FINE CONTAINER BACKGROUND GREEN AND GRAY -->
     </div>
 
 
