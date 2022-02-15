@@ -76,13 +76,17 @@
                     <!-- LISTA CONTATTI -->
                     <div class="contact-list">
                         <!-- UTENTI / UTENTE SINGOLO RICHIAMATO -->
-                        <div v-for="(contact, index) in contacts" class="single-user-chat" :class="{'active' : index === currentContactAttivo}">
+                        <div @click="currentActive(index)" v-for="(contact, index) in contacts" class="single-user-chat" :class="{'active' : index === currentContactAttivo}">
                             <!-- SINGOLO UTENTE CHAT IMAGE E TESTO -->
                             <div class="single-user-chat-image">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" >
                             </div>
                             <div class="single-user-chat-name">
-                                {{contact.name}}
+                                <div class="title-text-contact">
+                                    <span class="name">{{contact.name}}</span>
+                                    <span class="time">{{contact.messages[contact.messages.length -1].date}}</span>
+                                </div>
+                                <div class="mex">{{contact.messages[contact.messages.length -1].text}}</div>
                             </div>
                         </div>
                     </div>
@@ -143,7 +147,8 @@
                         </div>
                         <!-- AREA INVIO TESTO MESSAGGIO -->
                         <div class="message-area-testo">
-                            <input type="text" placeholder="Scrivi un messaggio">
+                            <!-- scrivo mex e appena rilascio tasto enter il mex viene inviato -->
+                            <input v-model="newMessage" @keyup.enter="messageSent" type="text" placeholder="Scrivi un messaggio">
                         </div>
                         <!-- AREA INVIO REC MESSAGGIO -->
                         <div class="message-icon">
