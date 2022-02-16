@@ -14,12 +14,25 @@
 // Risposta dall’interlocutore: ad ogni inserimento di un messaggio, 
 // l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 
+// MILESTONE 4
+// Ricerca utenti: scrivendo qualcosa nell’input a sinistra, 
+// vengono visualizzati solo i contatti il cui nome contiene le lettere inserite 
+// (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
+// MILESTONE 5 - BONUS
+// Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+// Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
+
+
 const vue = new Vue(
     {
         el: '#app',
         data: {
             currentContactAttivo: 0,
             newMessage: "",
+            selected: "",
+            lastDateAccess: "",
+            activeMessage: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -114,7 +127,7 @@ const vue = new Vue(
                 if(this.newMessage != '') {
                     this.contacts[this.currentContactAttivo].messages.push(
                         {
-                            date: '15/02/2022 12:00:00',
+                            date: dayjs().format('DD/MM/YYYY h:mm:ss'),
                             text: this.newMessage,
                             status: 'sent'
                         }
@@ -133,13 +146,35 @@ const vue = new Vue(
             messageReceived() {
                 this.contacts[this.currentContactAttivo].messages.push(
                     {
-                        date: '15/02/2022 12:00:00',
+                        date: dayjs().format('DD/MM/YYYY h:mm:ss'),
                         text: 'Ok!',
                         status: 'received'
                     }
                 );
-            }
+            },
+            // ricerca utenti nella barra di ricerca della chat
+            searchRicerca() {
+                const ricerca = this.selected;
 
+                this.contacts.forEach(contact => {
+                    if (!contact.name.toLowerCase().includes(ricerca.toLowerCase())) {
+                        contact.visible = false;
+                    } else if (this.selected == '') {
+                        contact.visible = true;
+                    }
+                });
+            },
+            // mostra info correnti al contatto selezionato in 'ultimo accesso'
+            dateCurrent() {
+                let contactMessage = this.contacts[this.currentContactAttivo].messages;
+
+                if (contactMessage[parseInt(contactMessage.length - 1)].status == 'received') {
+                    lastAccess = contactMessage[parseInt(contactMessage.length - 1)].date;
+                } else {
+                    lastAccess = contactMessage[parseInt(contactMessage.length - 2)].date;
+                }
+                return this.lastDateAccess = lastAccess;
+            },
             
         }
         // fine methods

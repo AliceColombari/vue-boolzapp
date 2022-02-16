@@ -69,14 +69,14 @@
                     <!-- RICERCA CONTATTI -->
                     <div class="search-contact">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input @keyup="searchRicerca" v-model="selected" type="search" placeholder="Cerca o inizia una nuova chat">
                     </div>
                     <!-- FINE RICERCA CONTATTI -->
 
                     <!-- LISTA CONTATTI -->
                     <div class="contact-list">
                         <!-- UTENTI / UTENTE SINGOLO RICHIAMATO -->
-                        <div @click="currentActive(index)" v-for="(contact, index) in contacts" class="single-user-chat" :class="{'active' : index === currentContactAttivo}">
+                        <div @click="currentActive(index)" v-if="contact.visible === true" v-for="(contact, index) in contacts" class="single-user-chat" :class="{'active' : index === currentContactAttivo}">
                             <!-- SINGOLO UTENTE CHAT IMAGE E TESTO -->
                             <div class="single-user-chat-image">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" >
@@ -105,7 +105,7 @@
                              </div>
                              <div class="user-name">
                                  {{contacts[currentContactAttivo].name}}
-                                 <p>Ultimo accesso oggi alle</p>
+                                 <p>Ultimo accesso {{dateCurrent()}}</p>
                              </div>
                          </div>
                          <!-- FINE UTENTE CHAT IMMAGINE E NOME -->
@@ -133,6 +133,7 @@
                         <div class="chat-area-container">
                             <div class="single-message" v-for="message in contacts[currentContactAttivo].messages" :class="{'sent' : message.status === 'sent', 'received' : message.status === 'received'}">
                                 <p>{{message.text}}</p>
+                                
                                 <span>{{message.date}}</span>
                             </div>
                         </div>
@@ -168,11 +169,13 @@
         <!-- FINE CONTAINER BACKGROUND GREEN AND GRAY -->
     </div>
 
-
-
-
     <!-- LINK VUE -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- LINK DAY.JS -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+
     <!-- LINK JS -->
     <script type="text/javascript" src="main.js"></script>
 </body>
